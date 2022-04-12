@@ -1,0 +1,63 @@
+
+// user authentication
+ prefix => '/api/user/auth'
+
+ "/register" => post ,data{username,email,password}
+ "/login" => post ,data{email,password}
+ "/forgotpassword" => post ,data{email}
+ "/logout" =>get
+====================================================================
+// products
+prefix=> '/api/admin/prodcts'
+
+"/create" =>post,data{ name,
+        description,
+        categories,
+        sizes,
+        price,
+        file=>name:"imagesArray",multipule, max 1}
+      *** send this data in form-data ***
+
+"/update/:id" =>put, data:{
+      name,
+            description,
+            category,
+            sizes,
+            price,
+}
+** no update for img**
+
+"/delete/:id" => delete 
+"/all "=> get
+
+===========================================================================
+
+//categories
+prefix=> '/api/amdin/categories'
+
+"/create" =>post ,data:{name}
+"/update/:id"=> put ,data{name}
+"/delete:id"=>delete
+"/all" => get
+
+==========================================================================
+//cart
+prefix => "/api/user/cart"
+"/add-item-to-cart"=>post ,data{
+    productId
+}
+
+================================================================================
+//order
+prefix => "/api/user/order" 
+"/create"=>post ,data:{
+            cart_id =>{** cart_belongs to this user **},
+            address,
+            city,
+            postalCode,
+            country,
+            phone,
+            paymentMethod =>{"stripe","when_arrive","paypal"}, 
+
+            ** note "stripe" is visa or mastercard **
+}
