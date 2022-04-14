@@ -104,7 +104,6 @@ exports.login = async(req,res,next)=>{
             });*/
             return res.status(200).json({
                success:true,
-               token:"Bearer "+token,
                username:user.username,
                role:user.role,
             })

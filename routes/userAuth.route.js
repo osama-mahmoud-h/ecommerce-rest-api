@@ -8,7 +8,6 @@ const {
     resetpassword,
     logout
 } = require("../controllers/user/userAuth.controller");
-
 //middleware 
 const verfiyUserAuth = require('../middleware/verfiyUserAuth');
 

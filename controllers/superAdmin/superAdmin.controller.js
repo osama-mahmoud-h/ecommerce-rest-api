@@ -1,7 +1,7 @@
 const {SuperAdmin} = require("../model/SuperAdmin");
 const Admin = require('../../model/Admin');
 
-exports.addAuthorization = async(req,res,next)=>{
+/*exports.addAuthorization = async(req,res,next)=>{
     try{
         const{auth} = req.body;
 
@@ -11,7 +11,7 @@ exports.addAuthorization = async(req,res,next)=>{
             error:err.message
         });
     }
-}
+}*/
 exports.addAdmin = async(req,res,next)=>{
     const {username,email,password} = req.body;
     try{
@@ -81,7 +81,7 @@ exports.deleteAdmin = async(req,res,next)=>{
         });
     }
 }
-
+/*
 exports.assignAuthToAdmin = async(req,res,next)=>{
     try{
         const{admin_id,authorization} = req.body;
@@ -106,7 +106,5 @@ exports.assignAuthToAdmin = async(req,res,next)=>{
         });
     }
 }
+*/
 
-exports.deleteAuthFromAdmin = async(req,res,next)=>{
-
-}

@@ -90,6 +90,10 @@ app.get("/api/dashboard",authVerfiy,(req,res,next)=>{
 });
 app.use('/api',require('./routes/test.route'));
 
+app.get('/lll',(req,res,next)=>{
+  res.redirect('http://127.0.0.1::3000')
+})
+
 app.get("/api/isUserAuth", (req,res,next)=>{
          authVerfiy(req,res,next,["create","update"]);
 }, (req, res) => {
@@ -100,20 +104,23 @@ app.get("/api/isUserAuth", (req,res,next)=>{
 
 app.use('/api/admin/product',require('./routes/product.router'));
 
-const {
-checkout
-} =require('./utils/stripe_payment');
-
 app.post("/api/payment",(req,res,next)=>{
   checkout(req,res,next);
 });
 app.use("/api/user",require('./routes/order.route'));
 
-/** test area */
-app.post('/paypal/pay',(req,res,next)=>{
+/** payments routs */
+//paypal
+app.use('/api/paypal',require('./routes/paypal.router'));
 
-});
+//stripe
+app.use('/api/stripe',require('./routes/stripe.route'));
+//==================================
+const paypal = require('paypal-rest-sdk');
 
+
+
+//==========================
 
 
 const PORT = 5000;
