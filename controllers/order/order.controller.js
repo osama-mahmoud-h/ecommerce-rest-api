@@ -77,3 +77,32 @@ exports.makeOrder = async (req,res,next)=>{
        return errorResponse(res,500,err.message);
     }
 }
+
+exports.getPaidOrder = async(req,res,next)=>{
+  try {
+    const allPaidOrders = await Order.find({
+      isPaid:true,
+    });
+
+    return SuccessResponse(res,200,"all paid orders got successfully",allPaidOrders);
+
+  } catch (err) {
+    return errorResponse(res,500,err.message);
+  }
+
+}
+
+exports.getWhenArriveOrder = async(req,res,next)=>{
+  try {
+    const allPaidWhenArriveOrders = await Order.find({
+      isPaid:true,
+      paymentMethod:"whenRecieve"
+    });
+
+    return SuccessResponse(res,200,"all Paid When Arrive Orders orders got successfully",allPaidWhenArriveOrders);
+
+  } catch (err) {
+    return errorResponse(res,500,err.message);
+  }
+  
+}

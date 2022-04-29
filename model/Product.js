@@ -72,7 +72,7 @@ const productSchema = new mongoose.Schema({
 const validate = (product)=>{
     const schema = Joi.object({
           name:Joi.string().required(),
-          description:Joi.string().required(),
+          description:Joi.string(),
           price:Joi.number().required(),
       });
     return schema.validate(product);

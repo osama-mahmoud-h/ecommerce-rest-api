@@ -42,7 +42,7 @@ const fileUploader =  (req,res,next,fileSize,_path,extensions)=>{
                 return cb(err);
             }
         }*/
-    }).array("imagesArray",1);
+    }).array("image",2);
 
 let fileUploadMiddleware = util.promisify(upload);
     

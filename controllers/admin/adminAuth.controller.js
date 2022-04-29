@@ -31,7 +31,8 @@ exports.login = async(req,res,next)=>{
        //send the  token
        const payload = {
           _id:admin._id,
-          role:admin.role 
+          role:admin.role,
+          username:admin.username 
        }
        const token = jwt.sign(
           payload,

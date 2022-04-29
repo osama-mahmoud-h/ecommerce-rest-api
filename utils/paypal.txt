@@ -1,8 +1,0 @@
-paypal personal 
-# visa = 4548714049237206
-# Expiration Date:
-04/2027
-# om9864899@personal.example.com
-
-==========================
-bussincss

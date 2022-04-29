@@ -1,8 +1,6 @@
-const {SuperAdmin} = require("../model/SuperAdmin");
+const {SuperAdmin} = require("../../model/SuperAdmin");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const Token = require('../model/token');
-const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 //validation user input validation
 const Joi = require("@hapi/joi");
@@ -81,8 +79,8 @@ exports.login = async(req,res,next)=>{
       //send the  token
       const payload = {
          _id:user._id,
-         role:user.role
-       
+         role:user.role,
+         username:user.username
       }
       const token = jwt.sign(
          payload,

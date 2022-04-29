@@ -81,6 +81,7 @@ exports.login = async(req,res,next)=>{
       //send the  token
       const payload = {
          _id:user._id,
+         username:user.username,
          role:user.role
        
       }

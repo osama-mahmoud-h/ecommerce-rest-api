@@ -22,6 +22,8 @@ module.exports = (req,res,next,authrs)=>{
             req.user = {};
             req.user._id=decoded._id;
             req.user.role=decoded.role;
+            req.user.username=decoded.username;
+
             next();
         });
     }catch(err){

@@ -1,4 +1,4 @@
-const {SuperAdmin} = require("../model/SuperAdmin");
+const {SuperAdmin} = require("../../model/SuperAdmin");
 const Admin = require('../../model/Admin');
 
 /*exports.addAuthorization = async(req,res,next)=>{
@@ -12,6 +12,7 @@ const Admin = require('../../model/Admin');
         });
     }
 }*/
+
 exports.addAdmin = async(req,res,next)=>{
     const {username,email,password} = req.body;
     try{

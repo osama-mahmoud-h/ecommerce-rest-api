@@ -8,7 +8,7 @@ const {
     forgotpassword,
     resetpassword,
     logout
-} = require("../controllers/superAdminAuth.controller");
+} = require("../controllers/superAdmin/superAdminAuth.controller");
 
 const{
     addAdmin,
@@ -17,18 +17,14 @@ const{
 //middleware
 const verfiySuperAdminAuth = require('../middleware/verfiySuperAdminAuth');
 
-router.route("/register").post(verfiySuperAdminAuth, register);
+router.route("/register").post((req,res,next)=>{verfiySuperAdminAuth(req,res,next)}, register);
 
-router.route("/login").post(verfiySuperAdminAuth, login);
+router.route("/login").post((req,res,next)=>{verfiySuperAdminAuth(req,res,next)}, login);
 
-router.route("/forgotpassword").post(verfiySuperAdminAuth, forgotpassword);
+router.route('/logout').get((req,res,next)=>{verfiySuperAdminAuth(req,res,next)},logout);
 
-router.route("/resetpassword/:userId/:token").put(verfiySuperAdminAuth,resetpassword);
+router.route('/add-admin').post((req,res,next)=>{verfiySuperAdminAuth(req,res,next)},addAdmin);
 
-router.route('/logout').get(verfiySuperAdminAuth,logout);
-
-router.route('/add-admin').post(verfiySuperAdminAuth,addAdmin);
-
-router.route('/delete-admin').post(verfiySuperAdminAuth,deleteAdmin);
+//router.route('/delete-admin').post(verfiySuperAdminAuth,deleteAdmin);
 
 module.exports = router;

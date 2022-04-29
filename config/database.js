@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
-const localDB="mongodb://localhost:27017/store";
-const cloudDB="mongodb://osamamh:<YOUR-PASSWORD>@cluster0-shard-00-00.6tkmn.mongodb.net:27017,cluster0-shard-00-01.6tkmn.mongodb.net:27017,cluster0-shard-00-02.6tkmn.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-t52da5-shard-0&authSource=admin&retryWrites=true&w=majority";
-
+ const LOCAL_DB_URL = 'mongodb://localhost:27017/store';
 const connectDB = ()=>{
-   mongoose.connect(localDB,{
+   mongoose.connect(process.env.LOCAL_DB_URL,{
     useNewUrlParser: true,
   
-  }).then(succ=>console.log("mongodb Connected succefully"))
-  .catch(err=>console.log(err));
+  }).then(succ=>{
+    console.log("mongodb Connected succefully")})
+  .catch(err=>console.log(err.message));
 }
 
 module.exports = connectDB;

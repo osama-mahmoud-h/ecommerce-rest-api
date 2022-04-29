@@ -18,11 +18,12 @@ exports.createProduct = async(req,res,next)=>{
    const files=req.files;
    var fileNames = [];
 
+
    if(files!== undefined)
    files.forEach((filename)=>{
-       fileNames.push(filename);
+       fileNames.push(filename.filename);
    });
-   
+   console.log(fileNames)
     const{
         name,
         description,
